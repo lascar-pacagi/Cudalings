@@ -147,17 +147,32 @@ ncu ./my_program              # Kernel-level profiling (if nsight-compute instal
 ### Part 8: CUDAlings — Progressive Exercises
 | What | How |
 |------|-----|
-| **41 starter exercises across 25 chapters** | Edit a stub, save, runner shows ✓ or ✗ in <1s |
+| **138 exercises across 30 chapters** | Edit a stub, save, runner shows ✓ or ✗ in <1s |
 | Validation modes | `stdout_exact`, `stdout_contains`, `stdout_regex`, `numeric`, `pytest` |
 | Watch loop | `./cudalings watch` — auto-rebuild on save |
 | Reference solutions | `./cudalings solution <name>` (use sparingly) |
+| Hints | `./cudalings hint <name>` (use these *before* the solution) |
+| Reset a stub | `./cudalings reset <name>` (restore the pristine starting point) |
+
+The chapters mirror Parts 1-7 one-to-one and add four cross-cutting groups:
+**00_warmup** (pre-chapter basics), **26_patterns** (histogram, stencil,
+1D conv, partition, segmented reduce, radix), **27_perf** (bandwidth,
+roofline, ncu parsing), **28_cnn** (im2col, batchnorm, full TinyCNN,
+conv2d backward), and **29_milestones** (one capstone per Part: SAXPY
+benchmark, async copy, max-scan, MLP train, custom torch CUDA op,
+ResNet train, tiny-GPT train).
 
 ```bash
 cd Part8_CUDAlings
 ./cudalings list                 # see every exercise + status
 ./cudalings watch                # tight feedback loop while you work
 ./cudalings hint 23_llm_c_fwd/01_layernorm_kernel
+./cudalings solution 23_llm_c_fwd/01_layernorm_kernel   # spoilers
 ```
+
+Realistic budget: ≈40-60 hours of focused practice to finish all 138.
+See `Part8_CUDAlings/README.md` for the full per-chapter map and a
+"how to actually work through this" section.
 
 ## Inspirations & References
 
