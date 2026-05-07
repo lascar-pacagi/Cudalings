@@ -1,0 +1,7 @@
+mode: stdout_contains
+---
+gid=0
+gid=1
+gid=15
+gid=16
+gid=31

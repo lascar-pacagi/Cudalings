@@ -1,0 +1,10 @@
+mode: stdout_contains
+---
+hello from thread 0
+hello from thread 1
+hello from thread 2
+hello from thread 3
+hello from thread 4
+hello from thread 5
+hello from thread 6
+hello from thread 7

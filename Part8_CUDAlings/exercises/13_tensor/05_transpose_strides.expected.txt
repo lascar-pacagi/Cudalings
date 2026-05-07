@@ -1,0 +1,3 @@
+mode: numeric
+target: 6
+tol: 0.5

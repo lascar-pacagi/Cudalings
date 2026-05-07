@@ -1,0 +1,5 @@
+mode: stdout_contains
+---
+h2d=
+d2d=
+d2h=

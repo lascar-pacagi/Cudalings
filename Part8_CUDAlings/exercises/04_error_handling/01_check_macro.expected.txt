@@ -1,0 +1,4 @@
+mode: stdout_regex
+allow_nonzero_rc: true
+---
+CUDA error.*memory

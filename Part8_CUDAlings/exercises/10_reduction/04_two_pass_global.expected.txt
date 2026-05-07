@@ -1,0 +1,3 @@
+mode: numeric
+target: 65536
+tol: 1

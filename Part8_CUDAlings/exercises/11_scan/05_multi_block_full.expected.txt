@@ -1,0 +1,3 @@
+mode: numeric
+target: 256
+tol: 0.5

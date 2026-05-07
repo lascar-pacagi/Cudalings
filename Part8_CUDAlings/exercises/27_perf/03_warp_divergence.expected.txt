@@ -1,0 +1,4 @@
+mode: stdout_contains
+---
+uniform_ms=
+checker_ms=

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Tiny shim so you can run `./cudalings list` instead of `python3 runner/cudalings.py list`.
+# Resolves to the runner regardless of the directory you launched from.
+set -euo pipefail
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+exec python3 "$HERE/runner/cudalings.py" "$@"

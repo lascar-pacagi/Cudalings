@@ -1,0 +1,3 @@
+mode: stdout_exact
+---
+v=42

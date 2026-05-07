@@ -1,0 +1,3 @@
+mode: stdout_regex
+---
+elapsed=0\.[0-9]+

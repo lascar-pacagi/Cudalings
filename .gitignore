@@ -1,0 +1,73 @@
+# Compiled CUDA / C++ binaries
+# Each Part's Makefiles produce executables next to the .cu sources -- these
+# are build outputs, not source. Match by extension lists below; we can't
+# blanket-ignore "files with no extension" because that would catch Makefiles.
+*.o
+*.obj
+*.so
+*.dll
+*.dylib
+*.exe
+*.out
+a.out
+
+# Per-chapter binaries that show up in Parts 1-6 (no extension)
+# Listed explicitly so future binaries with new names also get caught by
+# the broader pattern: any executable next to a .cu source.
+Part1_Foundations/*/hello_gpu
+Part1_Foundations/*/vector_add*
+Part1_Foundations/*/memory_types
+Part1_Foundations/*/stencil_1d
+Part1_Foundations/*/bandwidth_test
+Part1_Foundations/*/indexing_2d
+Part1_Foundations/*/warp_divergence
+Part1_Foundations/*/image_blur
+Part1_Foundations/*/error_handling
+Part1_Foundations/*/profiling_basics
+Part2_Optimization/*/launch_config
+Part2_Optimization/*/occupancy_demo
+Part2_Optimization/*/register_pressure
+Part3_GPU_Algorithms/*/matmul_*
+Part4_DL_Primitives/*/forward_test
+Part4_DL_Primitives/*/batchnorm_test
+Part4_DL_Primitives/*/conv2d_test
+Part4_DL_Primitives/*/lrp_test
+Part6_ResNet/*/resnet_test
+Part6_ResNet/*/resnet_train
+
+# CUDAlings: built exercise binaries are next to their .cu source.
+# The runner produces these under exercises/<chapter>/<name> (no extension).
+# We can't simply ignore "no-extension files" globally, so list known ones
+# and trust the runner's `clean`-style behaviour for new ones.
+Part8_CUDAlings/exercises/**/[!.]*
+!Part8_CUDAlings/exercises/**/*.cu
+!Part8_CUDAlings/exercises/**/*.cpp
+!Part8_CUDAlings/exercises/**/*.py
+!Part8_CUDAlings/exercises/**/*.txt
+!Part8_CUDAlings/exercises/**/*.md
+!Part8_CUDAlings/exercises/**/*.json
+!Part8_CUDAlings/exercises/**/
+
+# Python bytecode / cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# torch.utils.cpp_extension's JIT build cache
+build/
+dist/
+
+# Training artifacts (large; rebuildable)
+Part7_GPT_From_Scratch/**/ckpt.pt
+Part7_GPT_From_Scratch/**/input.txt
+Part7_GPT_From_Scratch/**/train.bin
+Part7_GPT_From_Scratch/**/val.bin
+Part7_GPT_From_Scratch/**/bpe.json
+
+# Editor / OS noise
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*~

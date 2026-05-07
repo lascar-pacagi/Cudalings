@@ -1,0 +1,3 @@
+mode: stdout_regex
+---
+ncu.*08_ncu_invocation

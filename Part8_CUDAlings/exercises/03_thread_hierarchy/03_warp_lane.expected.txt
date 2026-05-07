@@ -1,0 +1,4 @@
+mode: stdout_contains
+---
+warp=0 lane0_tid=0
+warp=1 lane0_tid=32

@@ -1,0 +1,3 @@
+mode: stdout_regex
+---
+^ok last=
