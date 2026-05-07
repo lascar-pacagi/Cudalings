@@ -11,9 +11,7 @@
 __global__ void warp_scan(const float* in, float* out) {
     int lane = threadIdx.x & 31;
     float v = in[lane];
-    // TODO: for d in 1, 2, 4, 8, 16:
-    //   float n = __shfl_up_sync(0xffffffff, v, d);
-    //   if (lane >= d) v += n;
+    // TODO: 5-round shuffle-up inclusive scan (same pattern as 09.04)
     out[lane] = v;
 }
 

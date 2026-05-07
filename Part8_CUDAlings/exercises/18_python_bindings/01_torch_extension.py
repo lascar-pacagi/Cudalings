@@ -17,12 +17,12 @@ import torch
 class MyReLU(torch.autograd.Function):
     @staticmethod
     def forward(ctx, x):
-        # TODO: ctx.save_for_backward(x) and return x.clamp(min=0)
+        # TODO: save x for backward, return ReLU(x)
         return x
 
     @staticmethod
     def backward(ctx, dy):
-        # TODO: pull the saved x; return dy * (x > 0).float()
+        # TODO: gate dy on the saved input's sign and return it
         return dy
 
 

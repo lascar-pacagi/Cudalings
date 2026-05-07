@@ -23,7 +23,7 @@ TView flatten_first_two(const float* buf, int B, int T, int E) {
     //   stride = (E, 1)
     TView v;
     v.data = buf;
-    // TODO: v.dim0 = B*T; v.dim1 = E; v.s0 = E; v.s1 = 1;
+    // TODO: set v's two dims and two strides per the comment above
     v.dim0 = 0; v.dim1 = 0; v.s0 = 0; v.s1 = 0;
     return v;
 }

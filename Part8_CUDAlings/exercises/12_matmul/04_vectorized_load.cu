@@ -22,7 +22,7 @@
 __global__ void copy_vec4(const float4* in, float4* out, int n4) {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     if (i < n4) {
-        // TODO: float4 v = in[i]; out[i] = v;
+        // TODO: copy one float4 from in to out (single 128-bit load + store)
     }
 }
 

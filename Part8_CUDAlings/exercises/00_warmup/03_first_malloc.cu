@@ -17,8 +17,8 @@ int main() {
     cudaError_t e1 = cudaSuccess;
     cudaError_t e2 = cudaSuccess;
 
-    // TODO: e1 = cudaMalloc(&d, bytes);
-    // TODO: e2 = cudaFree(d);
+    // TODO: allocate `bytes` on the device into `d`; capture the rc into e1
+    // TODO: free the device allocation; capture the rc into e2
 
     if (e1 == cudaSuccess && e2 == cudaSuccess) printf("alloc ok\n");
     else printf("FAIL e1=%d e2=%d\n", (int)e1, (int)e2);

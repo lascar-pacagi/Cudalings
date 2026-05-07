@@ -35,10 +35,8 @@ def my_conv2d_backward(x, W, dy):
     dy0 = dy.reshape(OC, OH * OW)
     Wm  = W.reshape(OC, IC * KH * KW)
 
-    # TODO: dW_flat = dy0 @ cols0.transpose(0, 1)            # (OC, IC*KH*KW)
-    # TODO: dW = dW_flat.reshape(OC, IC, KH, KW)
-    # TODO: dcols = Wm.transpose(0, 1) @ dy0                  # (IC*KH*KW, OH*OW)
-    # TODO: dx = F.fold(dcols.unsqueeze(0), (IH, IW), (KH, KW))
+    # TODO: derive dW from a matmul of dy and cols (then reshape to (OC,IC,KH,KW))
+    # TODO: derive dcols from a matmul of W and dy, then fold it back into dx (col2im)
     dW = torch.zeros_like(W)
     dx = torch.zeros_like(x)
     return dx, dW

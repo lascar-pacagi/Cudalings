@@ -16,9 +16,8 @@ __global__ void block_sum(const float* in, float* out) {
     int tid = threadIdx.x;
     int gid = blockIdx.x * blockDim.x + tid;
 
-    // TODO: load tile[tid] = in[gid]
-    // TODO: __syncthreads()
-    // TODO: if (tid == 0) sum the 256 entries and write out[blockIdx.x]
+    // TODO: stage in[gid] into shared memory, sync, then have thread 0
+    //       sum the tile and write the partial to out[blockIdx.x].
 }
 
 int main() {

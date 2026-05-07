@@ -30,10 +30,9 @@ def my_layernorm_backward(x, gamma, beta, dy, eps=1e-5):
     rstd = (var + eps).rsqrt()
     x_hat = (x - mean) * rstd
 
-    # TODO: a = dy * gamma
-    # TODO: dx = rstd * (a - a.mean(..., keepdim=True) - x_hat * (a * x_hat).mean(..., keepdim=True))
-    # TODO: dgamma = (dy * x_hat).sum over batch dims
-    # TODO: dbeta  = dy.sum over batch dims
+    # TODO: implement the compact layernorm backward from the docstring:
+    #       both `dx` (uses two row-mean reductions of dy*gamma and dy*gamma*x_hat)
+    #       and the parameter grads `dgamma`, `dbeta` (sums over batch dims).
     dx = torch.zeros_like(x)
     dgamma = torch.zeros_like(gamma)
     dbeta  = torch.zeros_like(beta)

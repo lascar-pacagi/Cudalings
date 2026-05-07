@@ -13,7 +13,7 @@ import torch
 
 
 def sgd_step(params, lr):
-    # TODO: with torch.no_grad(): for p in params: p.data -= lr * p.grad; p.grad.zero_()
+    # TODO: implement the docstring under no_grad: subtract lr*grad, then zero the grad
     pass
 
 

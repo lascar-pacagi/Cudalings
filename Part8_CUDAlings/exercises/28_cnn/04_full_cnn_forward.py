@@ -28,10 +28,7 @@ class TinyCNN(nn.Module):
         self.fc = nn.Linear(16 * 7 * 7, 10)
 
     def forward(self, x):
-        # TODO: x = F.max_pool2d(F.relu(self.b1(self.c1(x))), 2)
-        # TODO: x = F.max_pool2d(F.relu(self.b2(self.c2(x))), 2)
-        # TODO: x = x.view(x.size(0), -1)
-        # TODO: return self.fc(x)
+        # TODO: chain the two conv→bn→relu→pool stages, flatten, then run the FC head
         return torch.zeros(x.size(0), 10)
 
 

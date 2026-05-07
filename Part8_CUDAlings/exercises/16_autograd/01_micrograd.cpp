@@ -47,18 +47,16 @@ using V = std::shared_ptr<Value>;
 V add(const V& a, const V& b) {
     auto out = Value::make(a->data + b->data);
     out->parents = {a, b};
-    // TODO: out->_backward = [a, b, out_w = std::weak_ptr<Value>(out)] {
-    //     auto out = out_w.lock();
-    //     a->grad += out->grad;
-    //     b->grad += out->grad;
-    // };
+    // TODO: install out->_backward so addition's gradient flows to both
+    //       parents unchanged (mind the ownership cycle: capture `out` weakly).
     return out;
 }
 
 V mul(const V& a, const V& b) {
     auto out = Value::make(a->data * b->data);
     out->parents = {a, b};
-    // TODO: a->grad += b->data * out->grad; b->grad += a->data * out->grad;
+    // TODO: install out->_backward so multiplication's gradient routes to
+    //       each parent scaled by the OTHER parent's value.
     return out;
 }
 

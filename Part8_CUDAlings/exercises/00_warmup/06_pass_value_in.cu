@@ -12,12 +12,12 @@
 #include <cuda_runtime.h>
 
 __global__ void add_into(int* p, int a, int b) {
-    // TODO: *p = a + b;
+    // TODO: store the sum of a and b into *p
 }
 
 int main() {
     int* d; cudaMalloc(&d, sizeof(int));
-    // TODO: add_into<<<1, 1>>>(d, 7, 35);
+    // TODO: launch the kernel with 1x1, passing two ints that sum to 42
     int h = 0;
     cudaMemcpy(&h, d, sizeof(int), cudaMemcpyDeviceToHost);
     printf("v=%d\n", h);    // expected 42

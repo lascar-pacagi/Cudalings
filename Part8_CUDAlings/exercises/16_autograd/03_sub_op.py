@@ -41,8 +41,7 @@ def add(a, b):
 
 
 def sub(a, b):
-    # TODO: out = Value(a.data - b.data, [a, b])
-    # TODO: _bwd: a.grad += out.grad; b.grad -= out.grad
+    # TODO: build the out Value and wire its _backward (gradients per the docstring)
     return Value(0)
 
 

@@ -32,7 +32,7 @@ __global__ void blelloch_scan(const float* in, float* out) {
         if (tid < d) {
             int left  = offset * (2*tid + 1) - 1;
             int right = offset * (2*tid + 2) - 1;
-            // TODO: buf[right] += buf[left];
+            // TODO: combine the up-sweep step (see header)
         }
         offset *= 2;
     }
@@ -45,7 +45,7 @@ __global__ void blelloch_scan(const float* in, float* out) {
         if (tid < d) {
             int left  = offset * (2*tid + 1) - 1;
             int right = offset * (2*tid + 2) - 1;
-            // TODO: float t = buf[left]; buf[left] = buf[right]; buf[right] += t;
+            // TODO: combine the down-sweep step (swap-and-add, see header)
         }
     }
     __syncthreads();

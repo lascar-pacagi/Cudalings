@@ -34,7 +34,7 @@ __global__ void compact_evens(const int* data, int* out, int* count) {
     }
     __syncthreads();
 
-    // TODO: if (flags[tid]) out[pos[tid]] = v;
+    // TODO: kept items scatter themselves to their scan-derived output position
 }
 
 int main() {

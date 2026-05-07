@@ -22,8 +22,8 @@ __global__ void fill_pitched(float* base, size_t pitch_bytes, int h, int w) {
     int r = blockIdx.y * blockDim.y + threadIdx.y;
     int c = blockIdx.x * blockDim.x + threadIdx.x;
     if (r >= h || c >= w) return;
-    // TODO: char* row = (char*)base + r * pitch_bytes;
-    //       reinterpret_cast<float*>(row)[c] = 1.0f;
+    // TODO: index into the pitched row (note: pitch is in BYTES, not elements)
+    //       and write 1.0f at column `c`.
 }
 
 int main() {

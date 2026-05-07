@@ -46,7 +46,7 @@ __global__ void add_offset(float* out, const float* block_sums) {
     if (b == 0) return;
     int tid = threadIdx.x;
     int gid = b * BS + tid;
-    // TODO: out[gid] += block_sums[b - 1];
+    // TODO: add this block's offset (the previous block's prefix sum) to out[gid]
 }
 
 int main() {

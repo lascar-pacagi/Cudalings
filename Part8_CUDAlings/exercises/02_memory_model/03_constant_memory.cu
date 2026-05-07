@@ -14,19 +14,18 @@
 
 #define N 1024
 
-// TODO: declare __constant__ float c_coeffs[5];
+// TODO: declare a constant-memory array of 5 floats called `c_coeffs`
 
 __global__ void apply(float* x) {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     if (i < N) {
-        // TODO: x[i] = sum_{k=0..4} c_coeffs[k] * (i % (k+1) == 0 ? 1.0f : 0.0f)
-        // Easiest: x[i] = c_coeffs[i % 5]
+        // TODO: write c_coeffs[i % 5] into x[i]
     }
 }
 
 int main() {
     float h_coeffs[5] = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f};
-    // TODO: cudaMemcpyToSymbol(c_coeffs, h_coeffs, sizeof(h_coeffs))
+    // TODO: copy h_coeffs into the constant-memory symbol
 
     float *d; cudaMalloc(&d, N*sizeof(float));
     apply<<<4, 256>>>(d);

@@ -17,13 +17,13 @@ import torch.nn as nn
 def get_state_dict(model):
     """Return {name: tensor.clone()} for every parameter."""
     out = {}
-    # TODO: for name, p in model.named_parameters(): out[name] = p.data.clone()
+    # TODO: clone every named parameter into `out` keyed by its name
     return out
 
 
 def load_state_dict(model, sd):
     """Copy each tensor in `sd` back into the model's parameters by name."""
-    # TODO: with torch.no_grad(): for name, p in model.named_parameters(): p.copy_(sd[name])
+    # TODO: copy each tensor in `sd` into the matching parameter by name
     pass
 
 

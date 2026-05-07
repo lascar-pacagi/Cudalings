@@ -26,12 +26,10 @@ def my_attention_backward(q, k, v, dout):
     att_logits = (q @ k.transpose(0, 1)) * scale
     att = torch.softmax(att_logits, dim=-1)
 
-    # Backward
-    # TODO: dv = att.transpose(0, 1) @ dout
-    # TODO: datt = dout @ v.transpose(0, 1)
-    # TODO: softmax bwd: datt_logits = att * (datt - (att * datt).sum(dim=-1, keepdim=True))
-    # TODO: dq = datt_logits @ k * scale
-    # TODO: dk = datt_logits.transpose(0, 1) @ q * scale
+    # Backward (4 steps):
+    # TODO: gradient through the att @ v matmul -> dv and datt
+    # TODO: gradient through the row-wise softmax -> datt_logits (use the formula from 24.02)
+    # TODO: gradient through the q @ k^T scaled-dot -> dq and dk (mind `scale`)
     dq = torch.zeros_like(q)
     dk = torch.zeros_like(k)
     dv = torch.zeros_like(v)

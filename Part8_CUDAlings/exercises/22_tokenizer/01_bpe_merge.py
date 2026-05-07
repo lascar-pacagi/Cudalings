@@ -10,7 +10,7 @@ occurrence with a new id.
 def merge(ids, pair, new_id):
     """Walk ids; replace every consecutive `pair` with `new_id`."""
     out = []
-    # TODO: scan ids; if (ids[i], ids[i+1]) == pair, append new_id and skip 2
+    # TODO: walk ids and emit the merged token whenever the pair matches
     return out
 
 

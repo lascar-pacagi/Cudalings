@@ -21,9 +21,8 @@ __global__ void scan(const float* in, float* out) {
     buf[tid] = in[tid];
     __syncthreads();
 
-    // TODO: for d in 1, 2, 4, ..., N/2:
-    //   read = (tid >= d) ? buf[tid - d] : 0;   __syncthreads();
-    //   buf[tid] += read;                        __syncthreads();
+    // TODO: implement the doubling-offset loop described above
+    //        (read the neighbor before writing -- two syncs per round)
     out[tid] = buf[tid];
 }
 

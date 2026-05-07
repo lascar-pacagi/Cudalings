@@ -21,11 +21,9 @@ import math
 
 def get_lr(step, lr_max, lr_min, warmup, max_steps):
     if step < warmup:
-        # TODO: return lr_max * step / warmup
+        # TODO: linear warmup from 0 up to lr_max
         return 0.0
-    # TODO: progress = (step - warmup) / max(1, max_steps - warmup)
-    # TODO: progress = min(1.0, progress)
-    # TODO: return lr_min + 0.5 * (lr_max - lr_min) * (1 + math.cos(math.pi * progress))
+    # TODO: cosine decay from lr_max down to lr_min over the remaining steps
     return 0.0
 
 

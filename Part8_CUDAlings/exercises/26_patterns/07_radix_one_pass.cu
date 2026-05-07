@@ -35,8 +35,8 @@ __global__ void radix_pass_bit0(const int* in, int* out) {
     for (int i = 0; i < tid; ++i) { if (flags[i] == 0) ++t_zero; else ++t_one; }
 
     int dest;
-    // TODO: dest = (flags[tid] == 0) ? t_zero : (falses + t_one);
-    // TODO: out[dest] = v;
+    // TODO: pick dest based on flag (zeros pack into the head, ones into the tail)
+    // TODO: scatter v into out[dest]
 }
 
 int main() {

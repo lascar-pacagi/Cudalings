@@ -18,7 +18,7 @@
 #define N (1 << 20)
 
 __global__ void saxpy(int n, float a, const float* x, float* y) {
-    // TODO: grid-stride loop computing y[i] = a*x[i] + y[i]
+    // TODO: implement the formula above using a grid-stride loop
 }
 
 int main() {

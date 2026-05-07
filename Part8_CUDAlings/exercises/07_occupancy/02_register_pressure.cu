@@ -27,8 +27,7 @@ __global__ void poly(int* out, int n) {
 
 int main() {
     int blocks_light = 0, blocks_heavy = 0;
-    // TODO: cudaOccupancyMaxActiveBlocksPerMultiprocessor(&blocks_light, poly<4>,  256, 0);
-    // TODO: cudaOccupancyMaxActiveBlocksPerMultiprocessor(&blocks_heavy, poly<64>, 256, 0);
+    // TODO: query the occupancy API for poly<4> and poly<64> at blockSize=256
     printf("light=%d heavy=%d\n", blocks_light, blocks_heavy);
     // The validator checks `light >= heavy` (heavier kernel never has more
     // active blocks), and that both are positive.

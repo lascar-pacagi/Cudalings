@@ -16,7 +16,7 @@ def reshape_to_heads(x, n_head):
     """(B, T, E) -> (B, H, T, Dh) where Dh = E // H."""
     B, T, E = x.shape
     Dh = E // n_head
-    # TODO: x.view(B, T, H, Dh).transpose(1, 2)
+    # TODO: split E into (H, Dh), then move H next to B (no copy needed)
     return x
 
 

@@ -42,8 +42,7 @@ __global__ void softmax_xent_bwd(const float* logits, int target, float* dlogits
     }
     __syncthreads();
     float p = e / row_sum;
-    // TODO: float t = (i == target) ? 1.0f : 0.0f;
-    // TODO: dlogits[i] = (p - t) * scale;
+    // TODO: write the (probs - one_hot[target]) * scale formula from the header into dlogits[i]
 }
 
 int main() {

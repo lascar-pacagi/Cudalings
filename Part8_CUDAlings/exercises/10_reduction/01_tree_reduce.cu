@@ -20,7 +20,7 @@ __global__ void block_reduce(const float* in, float* out) {
     tile[tid] = (gid < N) ? in[gid] : 0.0f;
     __syncthreads();
 
-    // TODO: for s in blockDim/2, /4, ... 1: if (tid < s) tile[tid] += tile[tid + s]; __syncthreads();
+    // TODO: implement the halving tree-reduction described above (mind the syncs)
     if (tid == 0) out[blockIdx.x] = tile[0];
 }
 

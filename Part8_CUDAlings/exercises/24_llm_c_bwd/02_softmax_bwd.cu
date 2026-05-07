@@ -24,7 +24,7 @@ __global__ void softmax_bwd(const float* p, const float* dy, float* dx) {
         sdot = s;
     }
     __syncthreads();
-    // TODO: dx[i] = p[i] * (dy[i] - sdot);
+    // TODO: write the per-element softmax-backward formula from the header into dx
 }
 
 int main() {

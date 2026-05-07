@@ -27,8 +27,7 @@ class MLP:
             torch.nn.init.kaiming_uniform_(self.w2, a=math.sqrt(5))
 
     def __call__(self, x):
-        # TODO: h = relu(x @ w1 + b1)
-        # TODO: return h @ w2 + b2
+        # TODO: 2-layer MLP forward: linear -> relu -> linear
         return torch.zeros_like(x)
 
     def parameters(self):

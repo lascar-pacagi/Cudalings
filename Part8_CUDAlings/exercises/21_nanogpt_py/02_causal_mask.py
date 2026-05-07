@@ -12,7 +12,7 @@ import torch
 
 def causal_mask(T):
     """Return an (T, T) tensor of 0 on/below diag, -inf above."""
-    # TODO: torch.triu(torch.full((T,T), float('-inf')), diagonal=1)
+    # TODO: build the strictly-upper-triangular -inf mask described above
     return torch.zeros(T, T)
 
 

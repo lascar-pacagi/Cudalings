@@ -19,7 +19,7 @@ __global__ void histogram(const int* data, int* hist, int n) {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     if (i >= n) return;
     int v = data[i];
-    // TODO: atomicAdd(&hist[v], 1);
+    // TODO: increment the hist bin for v atomically
 }
 
 int main() {

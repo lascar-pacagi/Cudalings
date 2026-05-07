@@ -25,8 +25,7 @@ class SGD:
     def step(self):
         with torch.no_grad():
             for p, v in zip(self.params, self.buf):
-                # TODO: v.mul_(self.momentum).add_(p.grad)
-                # TODO: p.sub_(v, alpha=self.lr)
+                # TODO: update the momentum buffer in place, then take the SGD step
                 pass
 
     def zero_grad(self):

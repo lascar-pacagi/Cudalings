@@ -15,7 +15,7 @@
 #define N 1024
 
 __global__ void relu_bwd(const float* x, const float* dy, float* dx) {
-    // TODO: i = global tid; bounds; dx[i] = (x[i] > 0) ? dy[i] : 0
+    // TODO: gate dy through the ReLU mask (forward input was positive)
 }
 
 int main() {

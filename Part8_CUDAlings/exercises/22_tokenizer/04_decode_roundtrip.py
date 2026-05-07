@@ -35,7 +35,7 @@ def encode(text, merges):
 
 def decode(ids, vocab):
     """vocab[i] = bytes that token i expands to."""
-    # TODO: b = b"".join(vocab[i] for i in ids); return b.decode("utf-8")
+    # TODO: concatenate vocab lookups into bytes and decode them as UTF-8
     return ""
 
 

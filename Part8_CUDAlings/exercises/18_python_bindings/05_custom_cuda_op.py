@@ -21,7 +21,7 @@ CUDA_SRC = r"""
 
 __global__ void relu_kernel(const float* x, float* y, int n) {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
-    // TODO: if (i < n) y[i] = x[i] > 0 ? x[i] : 0.0f;
+    // TODO: bounds-check i, then write ReLU(x[i]) into y[i]
 }
 
 torch::Tensor relu_cuda(torch::Tensor x) {

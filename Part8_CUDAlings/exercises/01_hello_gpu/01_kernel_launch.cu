@@ -4,13 +4,11 @@
 // per thread, in any order. The kernel is launched once with a single block
 // of 8 threads.
 //
-// What to do:
-//   1) Inside `hello`, use printf and threadIdx.x to emit the line.
-//   2) Inside `main`, launch `hello` with <<<1, 8>>> and synchronize.
-//
 // Why we synchronize: device-side printf output is buffered and only flushed
-// when the device finishes work. Without cudaDeviceSynchronize() the program
-// can return before any output appears.
+// when the device finishes work. Without a synchronize, the program can
+// return before any output appears.
+//
+// (Hint file: `./cudalings hint 01_hello_gpu/01_kernel_launch`.)
 
 // I AM NOT DONE
 
@@ -18,10 +16,10 @@
 #include <cuda_runtime.h>
 
 __global__ void hello() {
-    // TODO: printf("hello from thread %d\n", ...)
+    // TODO: emit one line per thread containing its thread index
 }
 
 int main() {
-    // TODO: launch `hello`, then call cudaDeviceSynchronize().
+    // TODO: launch `hello` (one block, 8 threads) then wait for it to finish
     return 0;
 }

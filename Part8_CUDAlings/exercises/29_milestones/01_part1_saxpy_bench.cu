@@ -29,7 +29,7 @@
 __global__ void saxpy(int n, float a, const float* x, float* y) {
     int gid = blockIdx.x * blockDim.x + threadIdx.x;
     int stride = gridDim.x * blockDim.x;
-    // TODO: grid-stride loop computing y[i] = a * x[i] + y[i]
+    // TODO: implement SAXPY (y = a*x + y) via a grid-stride loop
 }
 
 int main() {

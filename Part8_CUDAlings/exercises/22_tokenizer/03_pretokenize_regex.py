@@ -26,7 +26,7 @@ PAT = re.compile(r"""
 
 
 def pretokenize(s):
-    # TODO: return PAT.findall(s)
+    # TODO: return all non-overlapping matches of PAT in `s`
     return []
 
 

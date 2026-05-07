@@ -15,7 +15,7 @@
 __global__ void residual_add(float* x, const float* y, int n) {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     if (i < n) {
-        // TODO: x[i] += y[i];
+        // TODO: in-place elementwise add of y into x
     }
 }
 

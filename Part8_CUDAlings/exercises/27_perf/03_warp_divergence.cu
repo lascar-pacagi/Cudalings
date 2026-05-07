@@ -49,8 +49,7 @@ int main() {
     cudaMemset(d, 0, N*sizeof(float));
 
     float t_uniform = 0.f, t_checker = 0.f;
-    // TODO: t_uniform = time_kernel(uniform_branch, d);
-    // TODO: t_checker = time_kernel(checker_branch, d);
+    // TODO: time both kernels via the helper and store the per-launch ms
 
     // We don't print the ratio (which depends on hw), just the fact that
     // both finished. Validator: stdout contains both labels.

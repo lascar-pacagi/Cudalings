@@ -15,10 +15,10 @@ struct Tensor {
 
     Tensor() = default;
     Tensor(size_t n_) : n(n_) {
-        // TODO: cudaMalloc(&data, n * sizeof(float))
+        // TODO: allocate `data` for `n` floats on the device
     }
     ~Tensor() {
-        // TODO: cudaFree(data) if non-null
+        // TODO: release the device allocation if it isn't null
     }
     // Disable copy; allow move (a Tensor uniquely owns its memory).
     Tensor(const Tensor&) = delete;

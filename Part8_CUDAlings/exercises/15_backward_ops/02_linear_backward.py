@@ -15,8 +15,7 @@ def linear_backward(x, W, dy):
     """Return (dx, dW) given the forward inputs and dy."""
     dx = None
     dW = None
-    # TODO: dx = dy @ W
-    # TODO: dW = dy.transpose(0, 1) @ x      # (OC, B) @ (B, IC)
+    # TODO: implement the two matmuls for dx and dW per the docstring shapes
     return dx, dW
 
 

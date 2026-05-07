@@ -16,7 +16,7 @@
 struct TView2D { const int* data; int d0, d1, s0, s1; };
 
 TView2D swap_strides_2d(TView2D v) {
-    // TODO: return TView2D{v.data, v.d1, v.d0, v.s1, v.s0};
+    // TODO: return a view with the two dims and the two strides swapped
     return v;
 }
 

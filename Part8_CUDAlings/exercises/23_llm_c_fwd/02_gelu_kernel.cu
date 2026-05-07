@@ -15,9 +15,7 @@ __global__ void gelu(float* x) {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     if (i >= N) return;
     float v = x[i];
-    // TODO: const float k = 0.7978845608f;
-    //       float u = k * (v + 0.044715f * v * v * v);
-    //       x[i] = 0.5f * v * (1.0f + tanhf(u));
+    // TODO: write the tanh-approx GELU formula from the header back into x[i]
     x[i] = v;  // placeholder
 }
 

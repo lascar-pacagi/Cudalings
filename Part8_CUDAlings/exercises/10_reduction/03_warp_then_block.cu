@@ -27,12 +27,12 @@ __global__ void block_sum(const float* in, float* out) {
     int lane = tid & 31;
 
     float v = in[tid];
-    // TODO: v = warp_sum(v);
-    // TODO: if (lane == 0) warp_results[warp_id] = v;
+    // TODO: stage 1 -- reduce within this warp, then have its lane 0 stash the
+    //                   result into warp_results[warp_id].
     __syncthreads();
     if (warp_id == 0) {
         float w = (lane < 8) ? warp_results[lane] : 0.0f;
-        // TODO: w = warp_sum(w);
+        // TODO: stage 2 -- reduce the 8 warp results within warp 0.
         if (lane == 0) *out = w;
     }
 }

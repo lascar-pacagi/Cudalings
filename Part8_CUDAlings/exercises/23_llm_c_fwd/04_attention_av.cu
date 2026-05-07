@@ -21,7 +21,7 @@ __global__ void attn_av(const float* att, const float* v, float* out) {
     int i = blockIdx.x;
     if (d >= Dh) return;
     float acc = 0.f;
-    // TODO: for j in 0..T: acc += att[i*T + j] * v[j*Dh + d]
+    // TODO: weighted sum -- take row i of att and combine with column d of v
     out[i*Dh + d] = acc;
 }
 

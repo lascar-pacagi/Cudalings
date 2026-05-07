@@ -23,8 +23,7 @@ __global__ void block_sum_dyn(const float* in, float* out) {
     extern __shared__ float tile[];
     int tid = threadIdx.x;
     int gid = blockIdx.x * blockDim.x + tid;
-    // TODO: tile[tid] = in[gid]; __syncthreads();
-    // TODO: thread 0 sums tile[0..blockDim-1] and writes out[blockIdx.x]
+    // TODO: stage in[gid] into shared, sync, then have thread 0 emit the block sum
 }
 
 int main() {

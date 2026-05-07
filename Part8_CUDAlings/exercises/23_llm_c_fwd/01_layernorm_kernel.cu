@@ -29,8 +29,8 @@ __global__ void layernorm(const float* x, float* y,
     buf[tid] = v;
     __syncthreads();
 
-    // TODO: thread 0 computes mean and rstd; broadcast via shared mem.
-    // y[row*E + tid] = gamma[tid] * (v - mean) * rstd + beta[tid];
+    // TODO: have thread 0 fill `mean` and `rstd`, then sync.
+    // TODO: write gamma * normalize(v) + beta into y[row, tid].
     y[row*E + tid] = 0;
 }
 

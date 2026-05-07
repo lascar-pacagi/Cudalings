@@ -20,7 +20,7 @@ CPP_SRC = r"""
 #include <torch/extension.h>
 
 torch::Tensor cpu_scale(torch::Tensor x, double a) {
-    // TODO: return x * a;       // torch::Tensor supports operator overloading
+    // TODO: return a tensor whose entries are x scaled by a (operator overload exists)
     return x;
 }
 """

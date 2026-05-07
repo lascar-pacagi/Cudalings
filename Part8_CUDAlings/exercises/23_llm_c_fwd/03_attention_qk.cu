@@ -26,8 +26,7 @@ __global__ void attn_qk(const float* q, const float* k, float* logits) {
         return;
     }
     float dot = 0.f;
-    // TODO: for d in 0..Dh: dot += q[i*Dh + d] * k[j*Dh + d]
-    // TODO: logits[i*T + j] = dot / sqrtf((float)Dh);
+    // TODO: dot product q[i] · k[j] across Dh, then write the scaled value into logits[i, j]
 }
 
 int main() {

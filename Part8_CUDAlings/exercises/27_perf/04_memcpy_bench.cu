@@ -38,9 +38,7 @@ int main() {
     for (int i = 0; i < N; ++i) h_pinned[i] = 1.0f;
 
     float h2d = 0, d2d = 0, d2h = 0;
-    // TODO: h2d = time_memcpy(d_a, h_pinned, BYTES, cudaMemcpyHostToDevice);
-    // TODO: d2d = time_memcpy(d_b, d_a,      BYTES, cudaMemcpyDeviceToDevice);
-    // TODO: d2h = time_memcpy(h_pinned, d_b, BYTES, cudaMemcpyDeviceToHost);
+    // TODO: time each of the three memcpy directions (H2D, D2D, D2H) via the helper
 
     auto bw = [](float ms) { return BYTES / (ms / 1e3) / 1e9; };
     printf("h2d=%.1f GB/s\n", bw(h2d));

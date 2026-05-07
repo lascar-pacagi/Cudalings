@@ -24,9 +24,7 @@ class ResidualBlock(nn.Module):
         self.bn2   = nn.BatchNorm2d(channels)
 
     def forward(self, x):
-        # TODO: out = relu(bn1(conv1(x)))
-        # TODO: out = bn2(conv2(out))
-        # TODO: return relu(out + x)     # the skip connection
+        # TODO: implement y = relu(x + F(x)) where F = (bn2 ∘ conv2 ∘ relu ∘ bn1 ∘ conv1)
         return x
 
 

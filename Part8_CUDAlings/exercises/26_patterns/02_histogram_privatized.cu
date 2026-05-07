@@ -25,11 +25,11 @@ __global__ void hist_priv(const int* data, int* hist, int n) {
 
     int i = blockIdx.x * blockDim.x + tid;
     if (i < n) {
-        // TODO: atomicAdd(&local[data[i]], 1);   // shared-mem atomics
+        // TODO: increment the BLOCK-LOCAL bin for data[i] (shared-mem atomic is fine)
     }
     __syncthreads();
 
-    // TODO: if (tid < BINS) atomicAdd(&hist[tid], local[tid]);
+    // TODO: each of the first BINS threads adds its local count into the global hist
 }
 
 int main() {

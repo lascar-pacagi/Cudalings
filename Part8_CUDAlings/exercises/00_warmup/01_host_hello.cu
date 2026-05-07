@@ -6,11 +6,12 @@
 //
 // Goal: make the program print exactly the line "hello".
 
-// I AM NOT DONE
+
 
 #include <cstdio>
 
 int main() {
-    // TODO: printf("hello\n");
+    // TODO: print the string "hello" followed by a newline
+    printf("hello\n");
     return 0;
 }

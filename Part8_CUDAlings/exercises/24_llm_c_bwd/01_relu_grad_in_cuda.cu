@@ -16,7 +16,7 @@
 __global__ void sigmoid_bwd(const float* y, const float* dy, float* dx) {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     if (i >= N) return;
-    // TODO: dx[i] = dy[i] * y[i] * (1.0f - y[i]);
+    // TODO: write the local sigmoid derivative * dy into dx (uses the saved y)
 }
 
 int main() {

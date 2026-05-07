@@ -27,8 +27,8 @@ def im2col_then_matmul(x, W):
     OH = IH - KH + 1
     OW = IW - KW + 1
 
-    # TODO: cols = torch.zeros(IC * KH * KW, OH * OW)
-    # TODO: for kh, kw in [0..KH) x [0..KW), copy x[:, kh:kh+OH, kw:kw+OW] into cols[*, h*OW + w]
+    # TODO: build the (IC*KH*KW, OH*OW) im2col matrix from x.
+    #       Hint: torch.nn.functional.unfold does this in one call.
     cols = torch.zeros(IC * KH * KW, OH * OW)
 
     Wm = W.reshape(OC, IC * KH * KW)         # (OC, IC*KH*KW)

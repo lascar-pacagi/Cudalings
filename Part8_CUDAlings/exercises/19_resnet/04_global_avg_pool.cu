@@ -35,7 +35,7 @@ __global__ void gap(const float* x, float* y) {
         if (tid < s) buf[tid] += buf[tid + s];
         __syncthreads();
     }
-    // TODO: if (tid == 0) y[b * C + c] = buf[0] / (float)(H * W);
+    // TODO: have thread 0 write the per-(b,c) mean (sum / H*W) to y
 }
 
 int main() {

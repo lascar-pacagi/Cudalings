@@ -15,8 +15,7 @@ struct Module {
     std::vector<Module*>    children;
 
     void zero_grad() {
-        // TODO: for each own_param: p->grad = 0.f
-        // TODO: for each child: child->zero_grad()
+        // TODO: zero this module's params, then recurse into children
     }
 };
 struct Linear : Module {

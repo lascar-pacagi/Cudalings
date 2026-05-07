@@ -35,18 +35,13 @@ class ResidualBlock(nn.Module):
 class ResNet8(nn.Module):
     def __init__(self, num_classes=10):
         super().__init__()
-        # TODO: self.stem = nn.Conv2d(3, 16, 3, padding=1, bias=False)
-        # TODO: self.bn = nn.BatchNorm2d(16)
-        # TODO: self.s1 = nn.Sequential(ResidualBlock(16), ResidualBlock(16))
-        # TODO: self.s2 = nn.Sequential(ResidualBlock(16), ResidualBlock(16))     # keep channels for simplicity
-        # TODO: self.head = nn.Linear(16, num_classes)
+        # TODO: register the layers from the docstring (stem conv + bn, two
+        #       2-block stages at 16 channels, final Linear head).
         pass
 
     def forward(self, x):
-        # TODO: x = F.relu(self.bn(self.stem(x)))
-        # TODO: x = self.s1(x); x = self.s2(x)
-        # TODO: x = F.adaptive_avg_pool2d(x, 1).view(x.size(0), -1)
-        # TODO: return self.head(x)
+        # TODO: chain the layers per the docstring; finish with global-avg-pool
+        #       + flatten + Linear head.
         return torch.zeros(x.size(0), 10)
 
 

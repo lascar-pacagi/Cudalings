@@ -15,9 +15,9 @@
 #define W 32
 
 __global__ void fill(int* m) {
-    // TODO: compute c (column) from x dim, r (row) from y dim
-    // TODO: bounds-check (c < W, r < H)
-    // TODO: m[r * W + c] = r * W + c
+    // TODO: compute the row + column owned by this thread (mind the dim mapping)
+    // TODO: bounds-check the row and column against H and W
+    // TODO: write the row-major linear offset into M[row][col]
 }
 
 int main() {

@@ -12,7 +12,7 @@
 #include <cuda_runtime.h>
 
 __inline__ __device__ float warp_reduce(float v) {
-    // TODO: for d in 16,8,4,2,1: v += __shfl_down_sync(0xffffffff, v, d);
+    // TODO: implement the 5-step shuffle-down sum described in the header
     return v;
 }
 

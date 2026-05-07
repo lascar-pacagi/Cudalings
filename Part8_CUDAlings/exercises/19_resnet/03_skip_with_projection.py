@@ -30,14 +30,13 @@ class DownsampleBlock(nn.Module):
         self.b1 = nn.BatchNorm2d(out_c)
         self.c2 = nn.Conv2d(out_c, out_c, 3, padding=1, bias=False)
         self.b2 = nn.BatchNorm2d(out_c)
-        # TODO: self.proj = nn.Conv2d(in_c, out_c, 1, stride=stride, bias=False)
-        # TODO: self.bp = nn.BatchNorm2d(out_c)
+        # TODO: register a 1x1 projection (and its BN) for the skip path
 
     def forward(self, x):
         h = F.relu(self.b1(self.c1(x)))
         h = self.b2(self.c2(h))
-        # TODO: skip = self.bp(self.proj(x))
-        skip = x      # placeholder; will FAIL until you add the proj path
+        # TODO: route x through the projection (+ BN) to match h's shape
+        skip = x      # placeholder; will FAIL until the proj path is wired
         return F.relu(h + skip)
 
 

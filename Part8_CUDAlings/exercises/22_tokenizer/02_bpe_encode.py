@@ -30,10 +30,7 @@ def merge_pair(ids, pair, new_id):
 
 def bpe_encode(text, merges):
     ids = list(text.encode("utf-8"))
-    # TODO: while len(ids) >= 2:
-    #   find the pair with the smallest merge_index
-    #   if it isn't in merges: break
-    #   ids = merge_pair(ids, pair, merges[pair])
+    # TODO: greedily apply the earliest-learned applicable merge until none fit
     return ids
 
 

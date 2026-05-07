@@ -16,7 +16,7 @@ __global__ void k(float* x, int n) {
 
 int main() {
     int min_grid = 0, block = 0;
-    // TODO: cudaOccupancyMaxPotentialBlockSize(&min_grid, &block, k, 0, 0);
+    // TODO: ask the occupancy heuristic for the best block size for kernel `k`
     printf("recommended_block=%d\n", block);
     return 0;
 }

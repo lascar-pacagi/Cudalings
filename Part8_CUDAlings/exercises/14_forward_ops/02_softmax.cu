@@ -23,10 +23,10 @@ __global__ void softmax_rows(const float* x, float* y) {
     float v = x[row*C + tid];
     buf[tid] = v;
     __syncthreads();
-    // TODO: reduce buf to find row max in buf[0]
-    // TODO: compute e = exp(v - row_max); buf[tid] = e; __syncthreads();
-    // TODO: reduce buf to find row sum
-    // TODO: y[row*C + tid] = e / row_sum
+    // TODO: reduce to find the row maximum (broadcast it via shared)
+    // TODO: replace buf[tid] with exp(v - row_max), syncing afterwards
+    // TODO: reduce to find the row sum
+    // TODO: write the normalized softmax value into y
     y[row*C + tid] = 0.0f;  // placeholder
 }
 

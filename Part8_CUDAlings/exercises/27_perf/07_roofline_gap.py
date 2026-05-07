@@ -17,8 +17,7 @@ Goal: implement roofline_pct(achieved_flops, ai, peak_bw, peak_flops).
 def roofline_pct(achieved_flops, ai, peak_bw, peak_flops):
     """All values in matching units (FLOPS, FLOP/byte, bytes/sec).
     Returns achieved as a percentage of the kernel's roofline ceiling."""
-    # TODO: peak_for_kernel = min(peak_bw * ai, peak_flops)
-    # TODO: return 100.0 * achieved_flops / peak_for_kernel
+    # TODO: derive the kernel's roofline ceiling, then return achieved as a % of it
     return 0.0
 
 

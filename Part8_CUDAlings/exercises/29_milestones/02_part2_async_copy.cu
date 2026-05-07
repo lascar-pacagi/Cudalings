@@ -25,12 +25,12 @@
 __global__ void doublify(float* x, int n) {
     int gid = blockIdx.x * blockDim.x + threadIdx.x;
     int stride = gridDim.x * blockDim.x;
-    // TODO: grid-stride loop, x[i] *= 2.0f
+    // TODO: double every element of x via a grid-stride loop
 }
 
 int main() {
     float* h_pinned = nullptr;
-    // TODO: cudaMallocHost(&h_pinned, N*sizeof(float))
+    // TODO: allocate `h_pinned` as page-locked host memory for N floats
     if (!h_pinned) { printf("FAIL alloc\n"); return 1; }
     for (int i = 0; i < N; ++i) h_pinned[i] = 1.0f;
 

@@ -14,12 +14,12 @@ import torch
 class MySigmoid(torch.autograd.Function):
     @staticmethod
     def forward(ctx, x):
-        # TODO: y = 1.0 / (1.0 + torch.exp(-x)); ctx.save_for_backward(y); return y
+        # TODO: compute y = sigmoid(x), save y for backward, return it
         return x
 
     @staticmethod
     def backward(ctx, dy):
-        # TODO: (y,) = ctx.saved_tensors; return dy * y * (1.0 - y)
+        # TODO: pull saved y, return dy * d/dx sigmoid (using y, not x)
         return dy
 
 

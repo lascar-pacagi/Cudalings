@@ -11,7 +11,7 @@
 #define N 1024
 
 __global__ void relu(const float* x, float* y) {
-    // TODO: i = global tid; bounds; y[i] = (x[i] > 0) ? x[i] : 0.0f
+    // TODO: compute global tid, bounds-check, write max(0, x[i]) into y[i]
 }
 
 int main() {

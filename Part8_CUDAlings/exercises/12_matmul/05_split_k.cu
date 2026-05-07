@@ -29,8 +29,8 @@ __global__ void matmul_split_k(const float* A, const float* B, float* C) {
     int slice = blockIdx.z;
     int k0 = slice * K_PER_SLICE;
     float acc = 0.f;
-    // TODO: for k in k0 .. k0 + K_PER_SLICE: acc += A[row*K + k] * B[k*N + col]
-    // TODO: atomicAdd(&C[row*N + col], acc)
+    // TODO: accumulate the partial dot product over this K-slice
+    // TODO: atomically add `acc` into C[row, col]
 }
 
 int main() {

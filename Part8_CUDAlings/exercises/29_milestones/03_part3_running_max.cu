@@ -27,7 +27,7 @@ __global__ void max_scan(const float* in, float* out) {
     for (int d = 1; d < N; d <<= 1) {
         float other = (tid >= d) ? buf[tid - d] : -1e30f;
         __syncthreads();
-        // TODO: if (other > buf[tid]) buf[tid] = other;
+        // TODO: combine with `max` (Hillis-Steele but with the max operator)
         __syncthreads();
     }
     out[tid] = buf[tid];

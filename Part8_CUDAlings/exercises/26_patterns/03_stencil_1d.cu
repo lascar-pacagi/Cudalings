@@ -30,7 +30,7 @@ __global__ void stencil_3pt(const float* x, float* y, int n) {
     }
     __syncthreads();
 
-    // TODO: y[gid] = (tile[tid] + tile[tid + 1] + tile[tid + 2]) / 3.0f
+    // TODO: write the 3-point average from the tile (mind the +1 halo offset)
 }
 
 int main() {

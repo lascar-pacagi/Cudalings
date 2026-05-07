@@ -23,7 +23,7 @@ __global__ void conv1d(const float* x, float* y, int n) {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     if (i < R || i >= n - R) { if (i < n) y[i] = 0.0f; return; }
     float acc = 0.f;
-    // TODO: for kk in 0..K: acc += x[i + kk - R] * c_filter[kk]
+    // TODO: convolve x's window of width K (centered at i) with c_filter
     y[i] = acc;
 }
 

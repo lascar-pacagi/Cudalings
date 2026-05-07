@@ -19,7 +19,7 @@ import tempfile
 C_SRC = r"""
 #include <stddef.h>
 void axpy_in_place(size_t n, float a, const float* x, float* y) {
-    /* TODO: for i in 0..n, y[i] += a * x[i] */
+    /* TODO: implement the AXPY update y += a*x in place */
 }
 """
 

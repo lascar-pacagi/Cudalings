@@ -17,10 +17,10 @@ int main() {
     int h_out[4] = {0, 0, 0, 0};
     int *d = nullptr;
 
-    // TODO: cudaMalloc(&d, N * sizeof(int));
-    // TODO: cudaMemcpy(d, h_in,  N*sizeof(int), cudaMemcpyHostToDevice);
-    // TODO: cudaMemcpy(h_out, d, N*sizeof(int), cudaMemcpyDeviceToHost);
-    // TODO: cudaFree(d);
+    // TODO: allocate `d` on the device for N ints
+    // TODO: copy h_in to the device buffer
+    // TODO: copy the device buffer back into h_out
+    // TODO: free the device allocation
 
     int sum = 0;
     for (int i = 0; i < N; ++i) sum += h_out[i];

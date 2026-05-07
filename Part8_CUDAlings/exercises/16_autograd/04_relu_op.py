@@ -31,7 +31,7 @@ class Value:
 def relu(x):
     out = Value(x.data if x.data > 0 else 0.0, [x])
     def _bwd():
-        # TODO: x.grad += (1.0 if x.data > 0 else 0.0) * out.grad
+        # TODO: route out.grad through the ReLU mask into x.grad
         pass
     out._backward = _bwd
     return out

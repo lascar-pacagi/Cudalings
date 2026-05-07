@@ -14,8 +14,8 @@
 __global__ void count_pred(int* out) {
     int tid = threadIdx.x;
     int pred = (tid >= 16);
-    // TODO: unsigned mask = __ballot_sync(0xffffffff, pred);
-    // TODO: if (tid == 0) *out = __popc(mask);
+    // TODO: build the warp-wide ballot mask from `pred`
+    // TODO: have lane 0 write the population-count of that mask to *out
 }
 
 int main() {

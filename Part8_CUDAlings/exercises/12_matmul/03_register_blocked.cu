@@ -33,14 +33,12 @@ __global__ void matmul_rb(const float* A, const float* B, float* C) {
     float acc[TT][TT] = {0};
 
     for (int t = 0; t < K; t += BT) {
-        // each thread loads TT*TT elements of A and B into shared
-        // TODO: load As[ty*TT + i][tx*TT + j] = A[(row0+i)*K + (t + tx*TT + j)]
-        // TODO: load Bs[ty*TT + i][tx*TT + j] = B[(t + ty*TT + i)*N + (col0 + j)]
+        // TODO: each thread loads its TT*TT slice of A and B into shared mem
         __syncthreads();
-        // TODO: for k in 0..BT, accumulate acc[i][j] += As[ty*TT+i][k] * Bs[k][tx*TT+j]
+        // TODO: contract along the BT-deep tile, updating each acc[i][j]
         __syncthreads();
     }
-    // TODO: write acc[i][j] to C[(row0+i)*N + (col0+j)]
+    // TODO: write the TT*TT register tile to its slot in C
 }
 
 int main() {

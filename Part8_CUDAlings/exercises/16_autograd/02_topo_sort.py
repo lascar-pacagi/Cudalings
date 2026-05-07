@@ -25,8 +25,7 @@ def topo_sort(node, visited=None, out=None):
     if node.name in visited:
         return out
     visited.add(node.name)
-    # TODO: for each parent of `node`, recurse: topo_sort(parent, visited, out)
-    # TODO: append node to out (post-order)
+    # TODO: post-order DFS -- visit parents first, then append `node`
     return out
 
 

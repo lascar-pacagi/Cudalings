@@ -21,7 +21,7 @@
 __global__ void seg_sum(const int* data, const int* seg, int* out, int n) {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     if (i >= n) return;
-    // TODO: atomicAdd(&out[seg[i]], data[i]);
+    // TODO: contribute data[i] to out[seg[i]] (groupby-sum, atomic)
 }
 
 int main() {

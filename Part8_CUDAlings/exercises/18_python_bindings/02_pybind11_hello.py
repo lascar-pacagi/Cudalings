@@ -19,7 +19,7 @@ CPP_SRC = r"""
 std::vector<float> square(const std::vector<float>& xs) {
     std::vector<float> out;
     out.reserve(xs.size());
-    // TODO: for each x in xs, out.push_back(x * x);
+    // TODO: fill `out` with the square of each input element
     return out;
 }
 """

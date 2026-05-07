@@ -24,7 +24,7 @@ __global__ void maxpool2x2(const float* in, float* out) {
     int ic = oc * 2;
     int irr = orr * 2;
     float m = -1e30f;
-    // TODO: loop dr, dc in {0, 1}: m = max(m, in[(irr+dr) * W + (ic+dc)])
+    // TODO: scan the 2x2 input window starting at (irr, ic) and keep the max
     out[orr * OW + oc] = m;
 }
 

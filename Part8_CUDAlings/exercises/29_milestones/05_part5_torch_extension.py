@@ -58,13 +58,13 @@ else:
         def forward(ctx, x, alpha):
             ctx.save_for_backward(x)
             ctx.alpha = alpha
-            # TODO: return mod.fwd(x, alpha)
+            # TODO: call into the compiled CUDA forward and return its result
             return x * 0.0
 
         @staticmethod
         def backward(ctx, dy):
             (x,) = ctx.saved_tensors
-            # TODO: return mod.bwd(x, dy, ctx.alpha), None
+            # TODO: call into the compiled CUDA backward; return (dx, None) -- alpha has no grad
             return None, None
 
     x = torch.tensor([-1.0, 0.0, 1.0, 2.0], device="cuda", requires_grad=True)

@@ -15,6 +15,6 @@ __global__ void noop() {}
 
 int main() {
     noop<<<1, 100000>>>();   // > maxThreadsPerBlock => invalid configuration
-    // TODO: cudaError_t e = cudaGetLastError(); if (e) printf(...)
+    // TODO: query the last error and, if non-success, print `launch error: <name>`
     return 0;
 }

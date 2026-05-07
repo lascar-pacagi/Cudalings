@@ -21,11 +21,11 @@ __global__ void add_per_block_bias(float* x, const float* bias_per_block) {
     int tid = threadIdx.x;
     int gid = blockIdx.x * blockDim.x + tid;
     if (tid == 0) {
-        // TODO: bias = bias_per_block[blockIdx.x];
+        // TODO: load this block's bias from global into the shared scalar
     }
     __syncthreads();
     if (gid < N) {
-        // TODO: x[gid] += bias;
+        // TODO: every thread adds the broadcast bias to its element of x
     }
 }
 

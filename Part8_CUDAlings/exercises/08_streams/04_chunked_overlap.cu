@@ -43,9 +43,8 @@ int main() {
         cudaStream_t cs = s[c & 1];
         size_t off    = (size_t)c * CHUNK_N;
         size_t nbytes = CHUNK_N * sizeof(float);
-        // TODO: cudaMemcpyAsync(d + off, h_pinned + off, nbytes, cudaMemcpyHostToDevice, cs);
-        // TODO: doublify<<<(CHUNK_N+255)/256, 256, 0, cs>>>(d + off, CHUNK_N);
-        // TODO: cudaMemcpyAsync(h_pinned + off, d + off, nbytes, cudaMemcpyDeviceToHost, cs);
+        // TODO: enqueue this chunk's three steps (H2D, kernel, D2H) on stream `cs`
+        //       so different chunks can overlap on different streams.
     }
     cudaDeviceSynchronize();
 

@@ -92,9 +92,7 @@ def main():
     losses = []
     for step in range(100):
         x, y = get_batch()
-        # TODO: _, loss = model(x, y)
-        # TODO: opt.zero_grad(); loss.backward(); opt.step()
-        # TODO: losses.append(float(loss))
+        # TODO: forward, backward, optimizer step; record the scalar loss into `losses`
         pass
 
     if losses and losses[-1] < losses[0] * 0.5:

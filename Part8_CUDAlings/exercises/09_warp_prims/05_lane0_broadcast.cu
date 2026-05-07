@@ -14,7 +14,7 @@
 __global__ void broadcast(float* sum_out) {
     int lane = threadIdx.x & 31;
     float v = (lane == 0) ? 42.0f : 0.0f;
-    // TODO: v = __shfl_sync(0xffffffff, v, 0);
+    // TODO: replace `v` on every lane with lane 0's value
 
     // sum across warp
     for (int d = 16; d > 0; d >>= 1)

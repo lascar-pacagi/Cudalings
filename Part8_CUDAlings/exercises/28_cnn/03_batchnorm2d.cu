@@ -53,7 +53,7 @@ __global__ void bn_forward(const float* x, float* y,
         int h = hw / W;
         int w = hw % W;
         int idx = ((b*C + c)*H + h)*W + w;
-        // TODO: y[idx] = gamma[c] * (x[idx] - mean) * rstd + beta[c];
+        // TODO: write gamma[c] * normalize(x[idx]) + beta[c] into y[idx]
     }
 }
 

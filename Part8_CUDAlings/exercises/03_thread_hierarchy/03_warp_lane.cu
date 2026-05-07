@@ -14,7 +14,7 @@
 
 __global__ void warp_lane() {
     int tid = threadIdx.x;
-    // TODO: int warp = tid / 32; int lane = tid % 32;
+    // TODO: derive `warp` and `lane` from tid (one warp = 32 threads)
     int warp = -1, lane = -1;
     if (lane == 0)                    // print only the lane-0 of each warp
         printf("warp=%d lane0_tid=%d\n", warp, tid);

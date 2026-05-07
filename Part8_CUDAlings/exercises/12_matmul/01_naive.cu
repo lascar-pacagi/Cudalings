@@ -16,9 +16,8 @@
 #define K 64
 
 __global__ void matmul(const float* A, const float* B, float* C) {
-    // TODO: row = blockIdx.y*blockDim.y + threadIdx.y
-    // TODO: col = blockIdx.x*blockDim.x + threadIdx.x
-    // TODO: bounds-check, accumulate sum_{k} A[row,k]*B[k,col]
+    // TODO: derive (row, col) from the 2D thread/block indices
+    // TODO: bounds-check, then accumulate the dot product across K
 }
 
 int main() {

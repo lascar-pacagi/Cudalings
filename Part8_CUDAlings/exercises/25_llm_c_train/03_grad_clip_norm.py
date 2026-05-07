@@ -19,9 +19,9 @@ def my_clip_grad_norm(params, max_norm):
     grads = [p.grad for p in params if p.grad is not None]
     if not grads:
         return 0.0
-    # TODO: total_norm = sqrt of sum of squared norms across all grads
+    # TODO: compute the global L2 norm across all grads (concatenated)
     total_norm = torch.tensor(0.0)
-    # TODO: if total_norm > max_norm: scale each grad by max_norm / (total_norm + 1e-6)
+    # TODO: if it exceeds max_norm, rescale every grad in place to bring it to max_norm
     return float(total_norm)
 
 

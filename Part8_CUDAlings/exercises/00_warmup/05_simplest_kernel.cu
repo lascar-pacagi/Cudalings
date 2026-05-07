@@ -11,13 +11,13 @@
 #include <cuda_runtime.h>
 
 __global__ void set_42(int* p) {
-    // TODO: *p = 42;
+    // TODO: write 42 into the int that p points to
 }
 
 int main() {
     int* d;
     cudaMalloc(&d, sizeof(int));
-    // TODO: launch set_42<<<1, 1>>>(d);
+    // TODO: launch the kernel with one block of one thread, passing `d`
     int h = 0;
     cudaMemcpy(&h, d, sizeof(int), cudaMemcpyDeviceToHost);
     printf("v=%d\n", h);     // expected 42
