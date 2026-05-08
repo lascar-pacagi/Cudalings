@@ -51,6 +51,7 @@ from __future__ import annotations
 import argparse
 import dataclasses
 import difflib
+import json
 import os
 import re
 import subprocess
@@ -95,6 +96,39 @@ def _detect_host_cc() -> str | None:
             return which(cand)
     return None
 NVCC_HOST_CC = _detect_host_cc()
+
+# Pass cache -- avoids re-validating exercises whose source is unchanged.
+# When `cmd_next` walks the exercise list, it normally re-runs every passing
+# exercise to confirm nothing regressed. With dozens of compiled CUDA files,
+# that's painful in `watch` mode. We cache (exercise → max(source, expected)
+# mtime at the time of the pass) and skip if the recorded mtime still matches.
+# Touch any file to invalidate that exercise's entry; delete the cache file
+# to invalidate all of them.
+PASS_CACHE_PATH = RUNNER_DIR / ".passed_cache.json"
+
+
+def _load_pass_cache() -> dict[str, float]:
+    if not PASS_CACHE_PATH.exists():
+        return {}
+    try:
+        return json.loads(PASS_CACHE_PATH.read_text())
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def _save_pass_cache(cache: dict[str, float]) -> None:
+    try:
+        PASS_CACHE_PATH.write_text(json.dumps(cache, indent=2))
+    except OSError:
+        pass  # cache is best-effort; failing to persist is not fatal
+
+
+def _exercise_mtime(ex: "Exercise") -> float:
+    """Return the latest mtime across an exercise's source + validator file.
+    A change to either should invalidate the cache (e.g. expected.txt edits)."""
+    src = ex.path.stat().st_mtime if ex.path.exists() else 0
+    exp = ex.expected.stat().st_mtime if ex.expected.exists() else 0
+    return max(src, exp)
 
 # ANSI colors -- terminal-only, disabled if NO_COLOR is set or stdout isn't a tty.
 _USE_COLOR = sys.stdout.isatty() and "NO_COLOR" not in os.environ
@@ -398,7 +432,11 @@ _VALIDATORS = {
 # ---------------------------------------------------------------------------
 # The big one: validate a single exercise end to end
 # ---------------------------------------------------------------------------
-def check(ex: Exercise) -> bool:
+def check(ex: Exercise, cache: dict[str, float] | None = None) -> bool:
+    """Build, run, and validate `ex`. If `cache` is provided, record this
+    exercise's mtime on a successful pass so subsequent `cmd_next` calls
+    can skip it. The caller is responsible for persisting the cache to disk
+    (see _save_pass_cache)."""
     print(f"{bold('•')} {ex.display}  {gray(f'[{ex.language}]')}")
 
     if ex.has_not_done_marker():
@@ -441,6 +479,8 @@ def check(ex: Exercise) -> bool:
     passed, msg = validator(spec, run, ex)
     if passed:
         print(green(f"  ✓ passed  ({run.duration_s*1000:.0f} ms)"))
+        if cache is not None:
+            cache[ex.display] = _exercise_mtime(ex)
         return True
 
     print(red("  ✗ validation failed"))
@@ -473,21 +513,44 @@ def cmd_run(items: list[Exercise], query: str) -> int:
     if ex is None:
         print(red(f"No exercise matches '{query}'"))
         return 2
-    return 0 if check(ex) else 1
+    cache = _load_pass_cache()
+    rc = 0 if check(ex, cache) else 1
+    _save_pass_cache(cache)
+    return rc
 
 
 def cmd_next(items: list[Exercise]) -> int:
     """Find and validate the first exercise that is either still marked
-    'I AM NOT DONE' or that fails to validate. This is what `watch` calls."""
-    for e in items:
-        if e.has_not_done_marker():
-            print(yellow(f"\n→ Next exercise: {e.display}\n"))
-            check(e)
-            return 1
-        if not check(e):
-            return 1
-    print(green("\n🎉 All exercises pass! You've worked through the course.\n"))
-    return 0
+    'I AM NOT DONE' or that fails to validate. This is what `watch` calls.
+
+    Exercises whose mtime matches the pass cache are skipped silently --
+    they passed last time and nothing has changed since. This makes `watch`
+    feel instant once you're deep in the course: only the file you saved
+    (and any later still-failing exercises) actually gets re-validated."""
+    cache = _load_pass_cache()
+    skipped = 0
+    try:
+        for e in items:
+            if e.has_not_done_marker():
+                if skipped:
+                    print(gray(f"(skipped {skipped} cached-passing exercise"
+                               f"{'s' if skipped != 1 else ''})"))
+                print(yellow(f"\n→ Next exercise: {e.display}\n"))
+                check(e, cache)
+                return 1
+            # Already-passing and unchanged? Skip without re-running.
+            if cache.get(e.display) == _exercise_mtime(e):
+                skipped += 1
+                continue
+            if not check(e, cache):
+                return 1
+        if skipped:
+            print(gray(f"(skipped {skipped} cached-passing exercise"
+                       f"{'s' if skipped != 1 else ''})"))
+        print(green("\n🎉 All exercises pass! You've worked through the course.\n"))
+        return 0
+    finally:
+        _save_pass_cache(cache)
 
 
 def cmd_watch(items: list[Exercise]) -> int:

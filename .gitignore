@@ -48,6 +48,9 @@ Part8_CUDAlings/exercises/**/[!.]*
 !Part8_CUDAlings/exercises/**/*.json
 !Part8_CUDAlings/exercises/**/
 
+# CUDAlings: pass-cache lives next to the runner; per-machine, never commit.
+Part8_CUDAlings/runner/.passed_cache.json
+
 # Python bytecode / cache
 __pycache__/
 *.py[cod]
